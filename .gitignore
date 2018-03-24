@@ -1,0 +1,7 @@
+#IDEA/eclipse settings
+.idea
+.settings
+.classpath
+.project
+# build
+build
