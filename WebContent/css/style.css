@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.container {
+    height: inherit;
+    background: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    background: lightblue;
+    height: fit-content;
+    text-align: center;
+    padding: 32px;
+}
+
+.item {
+    margin: 16px;
+}
+.item-code {
+    width: 300px;
+    display: flex;
+}
+
+input {
+    height: 44px;
+    width: 300px;
+    font-size: 16px;
+    padding-left: 12px;
+}
+
+.btn {
+    height: 44px;
+    width: 300px;
+    font-size: 16px;
+}
+.btn-code {
+    width: 64px;
+}
+
+.other {
+    margin: 8px;
+}
+.other>a {
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.link-forget {
+    float: left;
+}
+
+.link-register {
+    float: right;
+}
+
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}

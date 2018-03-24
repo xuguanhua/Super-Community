@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Reset</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="box">
+			<form id="form-code" action="">
+				<div class="item">
+					<input type="text" name="userID" id="userID" placeholder="手机号">
+				</div>
+				<div class="item item-code">
+					<input type="text" name="code" id="code" placeholder="验证码">
+					<button type="submit" class="btn btn-code" id="btn-code">发送</button>
+				</div>
+			</form>
+			<button class="btn" id="btn-next" disabled>下一步</button>
+
+			<form id="form-reset" action="" class="hide">
+				<div class="item">
+					<input type="password" name="password1" id="password1" placeholder="密码">
+				</div>
+				<div class="item">
+					<input type="password" name="password2" id="password2" placeholder="确认密码">
+				</div>
+				<button type="submit" class="btn">重置</button>
+			</form>
+		</div>
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/validate.js"></script>
+	<script>
+		$(document).ready(function () {
+			
+			$("#userID").blur( function(){
+				var phone = $("#userID").val();
+				
+				if(phone.length == 11){
+					$.post(
+							"register?step=5",
+							{
+								"telephone": $("#userID").val()
+							},
+							function (date) {
+								alert(date)
+								if (date) {
+									alert("该ID存在,可以修改密码");
+									$("#btn-code").removeAttr("disabled");
+								}else{
+									alert("该ID不存在");
+									$("#btn-code").attr("disabled", "disabled");
+								}
+							} 
+						)
+				}
+
+			});
+			
+			
+			$("#form-code").validate({
+				submitHandler: function (form) {
+					$.post(
+						"register?step=1",
+						{
+							"telephone": $("#userID").val()
+						},
+						function (date) {
+							alert(date.msg);
+							$("#btn-code").attr("disabled", "true");
+							$("#btn-next").removeAttr("disabled");
+						}, "json"
+					)
+				}
+			});
+
+			$("#btn-next").click(function () {
+				$.post(
+					"register?step=2",
+					{
+						"code": $("#code").val()
+					},
+					function (date) {
+						if (date) {
+							$("#form-code").attr("class", "hide");
+							$("#btn-next").attr("class", "hide");
+							$("#form-reset").attr("class", "show");
+						}
+						else {
+							alert("验证码错误,请重试");
+							$("#code").val("");
+						}
+					}
+				)
+			})
+
+			$("#form-reset").validate({
+				submitHandler: function (form) {
+					$.post(
+						"register?step=4",
+						{
+							"password": $("#password2").val()
+						},
+						function (data) {
+							location.href = "index.html";
+						}
+					)
+				}
+			});
+		})
+	</script>
+</body>
+
+</html>
