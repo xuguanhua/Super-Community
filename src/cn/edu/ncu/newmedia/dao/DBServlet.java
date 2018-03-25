@@ -1,4 +1,4 @@
-package me.gjhnstxu.db;
+package cn.edu.ncu.newmedia.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,19 +9,19 @@ import java.sql.SQLException;
 public class DBServlet {
 
 	/**
-	 * ÅĞ¶ÏÉçÍÅIDÊÇ·ñ´æÔÚ
+	 * åˆ¤æ–­ç¤¾å›¢IDæ˜¯å¦å­˜åœ¨
 	 *
 	 */
 	public boolean isExit(String mobile){
 		Connection conn = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			//Á¬½ÓÊı¾İ¿â
+			//è¿æ¥æ•°æ®åº“
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/community_recruit?useSSL=false","root","password");
 			
-			//²éÑ¯Êı¾İ¿â
+			//æŸ¥è¯¢æ•°æ®åº“
 			String select = "select community_phone from community_account where community_phone=? ";
-			//·µ»ØÖ´ĞĞ¾ä±ú
+			//è¿”å›æ‰§è¡Œå¥æŸ„
 			PreparedStatement stmt = conn.prepareStatement(select);
 			stmt.setString(1, mobile);
 			
@@ -41,26 +41,26 @@ public class DBServlet {
 		return false;
 	}
 	/**
-	 * ×¢²áÉçÍÅ
+	 * æ³¨å†Œç¤¾å›¢
 	 */
 	public void register(String mobile,String name,String password){
 		Connection conn = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			//Á¬½ÓÊı¾İ¿â
+			//è¿æ¥æ•°æ®åº“
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/community_recruit?useSSL=false","root","password");
 			
-			//Ìí¼ÓÒ»¸öÉçÍÅµ½Êı¾İ¿âÖĞ
+			//æ·»åŠ ä¸€ä¸ªç¤¾å›¢åˆ°æ•°æ®åº“ä¸­
 			String insert = "insert into community_account(community_phone,community_name,password) values(?,?,?)";
 			
-			//·µ»ØÖ´ĞĞ¾ä±ú
+			//è¿”å›æ‰§è¡Œå¥æŸ„
 			PreparedStatement stmt = conn.prepareStatement(insert);
-			//Êı¾İÌí¼Ó
+			//æ•°æ®æ·»åŠ 
 			stmt.setString(1, mobile);
 			stmt.setString(2, name);
 			stmt.setString(3, password);
-			//Ìá½»ĞŞ¸Ä
+			//æäº¤ä¿®æ”¹
 			stmt.executeUpdate();
 			stmt.close();
 			conn.close();
@@ -76,7 +76,7 @@ public class DBServlet {
 	}
 	
 	/**
-	 * Íü¼ÇÃÜÂë
+	 * å¿˜è®°å¯†ç 
 	 */
 	public void reset(String mobile,String password){
 		
@@ -84,17 +84,17 @@ public class DBServlet {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			//Á¬½ÓÊı¾İ¿â
+			//è¿æ¥æ•°æ®åº“
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/community_recruit?useSSL=false","root","password");
 			
-			//ĞŞ¸ÄÃÜÂë
+			//ä¿®æ”¹å¯†ç 
 			String update = "update community_account set password=? where community_phone=?";
-			//·µ»ØÖ´ĞĞ¾ä±ú
+			//è¿”å›æ‰§è¡Œå¥æŸ„
 			PreparedStatement stmt = conn.prepareStatement(update);
-			//Êı¾İÌí¼Ó
+			//æ•°æ®æ·»åŠ 
 			stmt.setString(2, mobile);
 			stmt.setString(1, password);
-			//Ìá½»ĞŞ¸Ä
+			//æäº¤ä¿®æ”¹
 			stmt.executeUpdate();
 			stmt.close();
 			conn.close();

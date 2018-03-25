@@ -1,7 +1,6 @@
-package me.gjhnstux.servlet;
+package cn.edu.ncu.newmedia.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,48 +8,48 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import api.ApiServlet;
-import me.gjhnstxu.db.DBServlet;
+import cn.edu.ncu.newmedia.dao.DBServlet;
+import cn.edu.ncu.newmedia.util.message.ApiServlet;
 
 public class RegisterServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 		
-		//ÉèÖÃ±àÂë¸ñÊ½
+		//è®¾ç½®ç¼–ç æ ¼å¼
 		request.setCharacterEncoding("utf-8");
 		
 		/*
-		 * »ñÈ¡Ç°¶ËµÄ·¢ËÍµÄÊı¾İ
-		 * 1.ÇëÇóµÄ²½Öèstep
-		 * 2.ÊÖ»úºÅÂëmobile
-		 * 3.Ç°¶ËÌîĞ´µÄÑéÖ¤Âë
+		 * è·å–å‰ç«¯çš„å‘é€çš„æ•°æ®
+		 * 1.è¯·æ±‚çš„æ­¥éª¤step
+		 * 2.æ‰‹æœºå·ç mobile
+		 * 3.å‰ç«¯å¡«å†™çš„éªŒè¯ç 
 		 */
-		//ÇëÇó²½Öè
+		//è¯·æ±‚æ­¥éª¤
 		String step = request.getParameter("step");
 
 		HttpSession session = request.getSession();
 		if(step.equals("1")){
 			
-			//Òª·¢ËÍµ½µÄÊÖ»úºÅÂë
+			//è¦å‘é€åˆ°çš„æ‰‹æœºå·ç 
 			String mobile = request.getParameter("telephone");
 			
-			//µ÷ÓÃapi
+			//è°ƒç”¨api
 			ApiServlet api = new ApiServlet();
 			
 			//apikey
 			String apikey = "0a85ec42a4c9da1f64f7f1e817255cab";
 			
-			//Éú³ÉËæ»úÑéÖ¤Âë
+			//ç”ŸæˆéšæœºéªŒè¯ç 
 			String code = api.newverification();
 			
 			//
 			session.setAttribute("code", code);
 			session.setAttribute("mobile", mobile);
 			
-//			System.out.println("µç»°ºÅÂëÊÇ"+session.getAttribute("mobile"));
+//			System.out.println("ç”µè¯å·ç æ˜¯"+session.getAttribute("mobile"));
 //			System.out.println("yzm" + session.getAttribute("code"));
-//			System.out.println("ÑéÖ¤ÂëÊÇ" + code);
-			String text = "¡¾NCUĞÂÃ½Ìå¡¿Äú¹ºÂòµÄ" + code + "ÉÌÆ·Òò¿â´æ²»×ã£¬ÕıÔÚÎªÄú°ìÀíÍË¿î£¬3¸ö¹¤×÷ÈÕÄÚÍË¿î½«»áÔ­Â··µ»Øµ½ÄúµÄ¸¶¿îÕË»§ÖĞ¡£";
+//			System.out.println("éªŒè¯ç æ˜¯" + code);
+			String text = "ã€NCUæ–°åª’ä½“ã€‘æ‚¨è´­ä¹°çš„" + code + "å•†å“å› åº“å­˜ä¸è¶³ï¼Œæ­£åœ¨ä¸ºæ‚¨åŠç†é€€æ¬¾ï¼Œ3ä¸ªå·¥ä½œæ—¥å†…é€€æ¬¾å°†ä¼šåŸè·¯è¿”å›åˆ°æ‚¨çš„ä»˜æ¬¾è´¦æˆ·ä¸­ã€‚";
 			
 			String result = api.sendMessage(apikey,text,mobile);
 			System.out.println(result);
@@ -60,18 +59,18 @@ public class RegisterServlet extends HttpServlet {
 			response.getWriter().print(result);
 			
 		}else if(step.equals("2")){
-			//»ñÈ¡Ç°¶ËÌîĞ´µÄÑéÖ¤Âë
+			//è·å–å‰ç«¯å¡«å†™çš„éªŒè¯ç 
 			String codeCheck = request.getParameter("code"); 
 			
-			//ÅĞ¶ÏÑéÖ¤ÂëÊÇ·ñÏàÍ¬
+			//åˆ¤æ–­éªŒè¯ç æ˜¯å¦ç›¸åŒ
 			if(codeCheck.equals(session.getAttribute("code"))){
-				System.out.println("ÑéÖ¤ÂëÏàÍ¬");
+				System.out.println("éªŒè¯ç ç›¸åŒ");
 				response.setCharacterEncoding("UTF-8");
 				response.getWriter().print("true");
 			}
 		}else if(step.equals("3")){
 			
-			//»ñÈ¡Ç°¶ËÌîĞ´µÄÉçÍÅÃû³ÆºÍµÇÂ¼ÃÜÂë
+			//è·å–å‰ç«¯å¡«å†™çš„ç¤¾å›¢åç§°å’Œç™»å½•å¯†ç 
 			String community = request.getParameter("community");
 			String password = request.getParameter("password");
 			

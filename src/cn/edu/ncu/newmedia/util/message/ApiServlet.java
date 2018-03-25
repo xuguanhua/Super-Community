@@ -1,4 +1,4 @@
-package api;
+package cn.edu.ncu.newmedia.util.message;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,15 +19,15 @@ import org.apache.http.util.EntityUtils;
 
 public class ApiServlet {
 
-	 //±àÂë¸ñÊ½¡£·¢ËÍ±àÂë¸ñÊ½Í³Ò»ÓÃUTF-8
+	 //ç¼–ç æ ¼å¼ã€‚å‘é€ç¼–ç æ ¼å¼ç»Ÿä¸€ç”¨UTF-8
     private static String ENCODING = "UTF-8";
 	/**
-	 * µ¥Ìõ¶ÌĞÅ·¢ËÍ£¬ÖÇÄÜÆ¥Åä¶ÌĞÅÄ£°å
+	 * å•æ¡çŸ­ä¿¡å‘é€ï¼Œæ™ºèƒ½åŒ¹é…çŸ­ä¿¡æ¨¡æ¿
 	 * 
-	 * @param apikey ºóÌ¨²é¿´
+	 * @param apikey åå°æŸ¥çœ‹
 	 * @param text	
-	 * @param mobile ½ÓÊÕµÄÊÖ»úºÅÂë
-	 * @return json¸ñÊ½×Ö·û´®
+	 * @param mobile æ¥æ”¶çš„æ‰‹æœºå·ç 
+	 * @return jsonæ ¼å¼å­—ç¬¦ä¸²
 	 */
 	
 	public static String sendMessage(String apikey,String text,String mobile){
@@ -40,15 +40,15 @@ public class ApiServlet {
 	}
 
 	/**
-	 * »ùÓÚHttpClient 4.3µÄÍ¨ÓÃpost·½·¨
+	 * åŸºäºHttpClient 4.3çš„é€šç”¨postæ–¹æ³•
 	 * 
-	 * @param url 		Ìá½»µÄURL
-	 * @param params	Ìá½»<²ÎÊı,Öµ>Map
-	 * @return			Ìá½»ÏìÓ¦
+	 * @param url 		æäº¤çš„URL
+	 * @param params	æäº¤<å‚æ•°,å€¼>Map
+	 * @return			æäº¤å“åº”
 	 */
 	private static String post(String url, Map<String, String> params) {
 		CloseableHttpClient client = HttpClients.createDefault();
-		String responseText = "";//ÏìÓ¦ÄÚÈİ
+		String responseText = "";//å“åº”å†…å®¹
 		CloseableHttpResponse response = null;
 		
 		try{
@@ -80,7 +80,7 @@ public class ApiServlet {
 		return responseText;
 	}
 	
-	/*Ëæ»úÉú³É6Î»ÊıµÄÑéÖ¤Âë*/
+	/*éšæœºç”Ÿæˆ6ä½æ•°çš„éªŒè¯ç */
 	public static String newverification(){
 		String s = "";
 		for(int i = 0;i < 6;i++){
