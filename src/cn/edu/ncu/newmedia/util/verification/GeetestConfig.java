@@ -1,15 +1,15 @@
-package demo;
+package cn.edu.ncu.newmedia.util.verification;
 
 import javax.swing.text.StyledEditorKit.BoldAction;
 
 /**
- * GeetestWeb配置文件
+ * GeetestWeb閰嶇疆鏂囦欢
  * 
  *
  */
 public class GeetestConfig {
 
-	// 填入自己的captcha_id和private_key
+	// 濉叆鑷繁鐨刢aptcha_id鍜宲rivate_key
 	private static final String geetest_id = "002bc30ff1eef93e912f45814945e752";
 	private static final String geetest_key = "4193a0e3247b82a26f563d595c447b1a";
 	private static final boolean newfailback = true;

@@ -1,4 +1,4 @@
-package demo;
+package cn.edu.ncu.newmedia.util.verification;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,48 +9,47 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.edu.ncu.newmedia.util.verification.sdk.GeetestLib;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import sdk.GeetestLib;
-
 
 /**
- * Ê¹ÓÃpost·½Ê½£¬·µ»ØÑéÖ¤½á¹û, request±íµ¥ÖĞ±ØĞë°üº¬challenge, validate, seccode
+ * ä½¿ç”¨postæ–¹å¼ï¼Œè¿”å›éªŒè¯ç»“æœ, requestè¡¨å•ä¸­å¿…é¡»åŒ…å«challenge, validate, seccode
  */
 public class VerifyLoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		GeetestLib gtSdk = new GeetestLib(GeetestConfig.getGeetest_id(), GeetestConfig.getGeetest_key(), 
+		GeetestLib gtSdk = new GeetestLib(GeetestConfig.getGeetest_id(), GeetestConfig.getGeetest_key(),
 				GeetestConfig.isnewfailback());
 			
 		String challenge = request.getParameter(GeetestLib.fn_geetest_challenge);
 		String validate = request.getParameter(GeetestLib.fn_geetest_validate);
 		String seccode = request.getParameter(GeetestLib.fn_geetest_seccode);
 		
-		//´ÓsessionÖĞ»ñÈ¡gt-server×´Ì¬
+		//ä»sessionä¸­è·å–gt-serverçŠ¶æ€
 		int gt_server_status_code = (Integer) request.getSession().getAttribute(gtSdk.gtServerStatusSessionKey);
 		
-		//´ÓsessionÖĞ»ñÈ¡userid
+		//ä»sessionä¸­è·å–userid
 		String userid = (String)request.getSession().getAttribute("userid");
 		
-		//×Ô¶¨Òå²ÎÊı,¿ÉÑ¡ÔñÌí¼Ó
+		//è‡ªå®šä¹‰å‚æ•°,å¯é€‰æ‹©æ·»åŠ 
 		HashMap<String, String> param = new HashMap<String, String>(); 
-		param.put("user_id", userid); //ÍøÕ¾ÓÃ»§id
-		param.put("client_type", "web"); //web:µçÄÔÉÏµÄä¯ÀÀÆ÷£»h5:ÊÖ»úÉÏµÄä¯ÀÀÆ÷£¬°üÀ¨ÒÆ¶¯Ó¦ÓÃÄÚÍêÈ«ÄÚÖÃµÄweb_view£»native£ºÍ¨¹ıÔ­ÉúSDKÖ²ÈëAPPÓ¦ÓÃµÄ·½Ê½
-		param.put("ip_address", "127.0.0.1"); //´«ÊäÓÃ»§ÇëÇóÑéÖ¤Ê±ËùĞ¯´øµÄIP
+		param.put("user_id", userid); //ç½‘ç«™ç”¨æˆ·id
+		param.put("client_type", "web"); //web:ç”µè„‘ä¸Šçš„æµè§ˆå™¨ï¼›h5:æ‰‹æœºä¸Šçš„æµè§ˆå™¨ï¼ŒåŒ…æ‹¬ç§»åŠ¨åº”ç”¨å†…å®Œå…¨å†…ç½®çš„web_viewï¼›nativeï¼šé€šè¿‡åŸç”ŸSDKæ¤å…¥APPåº”ç”¨çš„æ–¹å¼
+		param.put("ip_address", "127.0.0.1"); //ä¼ è¾“ç”¨æˆ·è¯·æ±‚éªŒè¯æ—¶æ‰€æºå¸¦çš„IP
 		
 		int gtResult = 0;
 
 		if (gt_server_status_code == 1) {
-			//gt-serverÕı³££¬Ïògt-server½øĞĞ¶ş´ÎÑéÖ¤
+			//gt-serveræ­£å¸¸ï¼Œå‘gt-serverè¿›è¡ŒäºŒæ¬¡éªŒè¯
 				
 			gtResult = gtSdk.enhencedValidateRequest(challenge, validate, seccode, param);
 			System.out.println(gtResult);
 		} else {
-			// gt-server·ÇÕı³£Çé¿öÏÂ£¬½øĞĞfailbackÄ£Ê½ÑéÖ¤
+			// gt-serveréæ­£å¸¸æƒ…å†µä¸‹ï¼Œè¿›è¡Œfailbackæ¨¡å¼éªŒè¯
 				
 			System.out.println("failback:use your own server captcha validate");
 			gtResult = gtSdk.failbackValidateRequest(challenge, validate, seccode);
@@ -59,7 +58,7 @@ public class VerifyLoginServlet extends HttpServlet {
 
 
 		if (gtResult == 1) {
-			// ÑéÖ¤³É¹¦
+			// éªŒè¯æˆåŠŸ
 			PrintWriter out = response.getWriter();
 			JSONObject data = new JSONObject();
 			try {
@@ -71,7 +70,7 @@ public class VerifyLoginServlet extends HttpServlet {
 			out.println(data.toString());
 		}
 		else {
-			// ÑéÖ¤Ê§°Ü
+			// éªŒè¯å¤±è´¥
 			JSONObject data = new JSONObject();
 			try {
 				data.put("status", "fail");

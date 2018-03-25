@@ -1,4 +1,4 @@
-package me.gjhnstux.servlet;
+package cn.edu.ncu.newmedia.servlet;
 
 import java.io.IOException;
 
