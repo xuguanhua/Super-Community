@@ -3,10 +3,10 @@
 <web-app id="WebApp_ID">
 	<display-name>GtJavaSdkDemo</display-name>
 
-<!-- 极验验证码  start -->
+	<!-- 极验验证码  start -->
 	<servlet>
 		<servlet-name>StartCaptchaServlet</servlet-name>
-		<servlet-class>demo.StartCaptchaServlet</servlet-class>
+		<servlet-class>cn.edu.ncu.newmedia.util.verification.StartCaptchaServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>StartCaptchaServlet</servlet-name>
@@ -15,25 +15,25 @@
 
 	<servlet>
 		<servlet-name>VerifyLoginServlet</servlet-name>
-		<servlet-class>demo.VerifyLoginServlet</servlet-class>
+		<servlet-class>cn.edu.ncu.newmedia.util.verification.VerifyLoginServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>VerifyLoginServlet</servlet-name>
 		<url-pattern>/gt/ajax-validate2</url-pattern>
 	</servlet-mapping>
 
-<!-- 极验验证码  end -->
+	<!-- 极验验证码  end -->
 
-<!-- 注册  -->
+	<!-- 注册  -->
 	<servlet>
 		<servlet-name>RegisterServlet</servlet-name>
-		<servlet-class>me.gjhnstux.servlet.RegisterServlet</servlet-class>
+		<servlet-class>cn.edu.ncu.newmedia.servlet.RegisterServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>RegisterServlet</servlet-name>
 		<url-pattern>register</url-pattern>
-	</servlet-mapping>	
-  
+	</servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>

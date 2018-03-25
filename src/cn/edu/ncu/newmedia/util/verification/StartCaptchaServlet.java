@@ -1,4 +1,4 @@
-package demo;
+package cn.edu.ncu.newmedia.util.verification;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import sdk.GeetestLib;
+import cn.edu.ncu.newmedia.util.verification.sdk.GeetestLib;
 
 
 /**
- * Ê¹ÓÃGetµÄ·½Ê½·µ»ØchallengeºÍcapthca_id,´Ë·½Ê½ÒÔÊµÏÖÇ°ºó¶ËÍêÈ«·ÖÀëµÄ¿ª·¢Ä£Ê½
+ * ä½¿ç”¨Getçš„æ–¹å¼è¿”å›challengeå’Œcapthca_id,æ­¤æ–¹å¼ä»¥å®ç°å‰åç«¯å®Œå…¨åˆ†ç¦»çš„å¼€å‘æ¨¡å¼
  *
  */
 public class StartCaptchaServlet extends HttpServlet {
@@ -21,26 +21,26 @@ public class StartCaptchaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		GeetestLib gtSdk = new GeetestLib(GeetestConfig.getGeetest_id(), GeetestConfig.getGeetest_key(), 
+		GeetestLib gtSdk = new GeetestLib(GeetestConfig.getGeetest_id(), GeetestConfig.getGeetest_key(),
 				GeetestConfig.isnewfailback());
 
 		String resStr = "{}";
 		
-		//×Ô¶¨Òåuserid
+		//è‡ªå®šä¹‰userid
 		String userid = "test";
 		
-		//×Ô¶¨Òå²ÎÊı,¿ÉÑ¡ÔñÌí¼Ó
+		//è‡ªå®šä¹‰å‚æ•°,å¯é€‰æ‹©æ·»åŠ 
 		HashMap<String, String> param = new HashMap<String, String>(); 
-		param.put("user_id", userid); //ÍøÕ¾ÓÃ»§id
-		param.put("client_type", "web"); //web:µçÄÔÉÏµÄä¯ÀÀÆ÷£»h5:ÊÖ»úÉÏµÄä¯ÀÀÆ÷£¬°üÀ¨ÒÆ¶¯Ó¦ÓÃÄÚÍêÈ«ÄÚÖÃµÄweb_view£»native£ºÍ¨¹ıÔ­ÉúSDKÖ²ÈëAPPÓ¦ÓÃµÄ·½Ê½
-		param.put("ip_address", "127.0.0.1"); //´«ÊäÓÃ»§ÇëÇóÑéÖ¤Ê±ËùĞ¯´øµÄIP
+		param.put("user_id", userid); //ç½‘ç«™ç”¨æˆ·id
+		param.put("client_type", "web"); //web:ç”µè„‘ä¸Šçš„æµè§ˆå™¨ï¼›h5:æ‰‹æœºä¸Šçš„æµè§ˆå™¨ï¼ŒåŒ…æ‹¬ç§»åŠ¨åº”ç”¨å†…å®Œå…¨å†…ç½®çš„web_viewï¼›nativeï¼šé€šè¿‡åŸç”ŸSDKæ¤å…¥APPåº”ç”¨çš„æ–¹å¼
+		param.put("ip_address", "127.0.0.1"); //ä¼ è¾“ç”¨æˆ·è¯·æ±‚éªŒè¯æ—¶æ‰€æºå¸¦çš„IP
 
-		//½øĞĞÑéÖ¤Ô¤´¦Àí
+		//è¿›è¡ŒéªŒè¯é¢„å¤„ç†
 		int gtServerStatus = gtSdk.preProcess(param);
 		
-		//½«·şÎñÆ÷×´Ì¬ÉèÖÃµ½sessionÖĞ
+		//å°†æœåŠ¡å™¨çŠ¶æ€è®¾ç½®åˆ°sessionä¸­
 		request.getSession().setAttribute(gtSdk.gtServerStatusSessionKey, gtServerStatus);
-		//½«useridÉèÖÃµ½sessionÖĞ
+		//å°†useridè®¾ç½®åˆ°sessionä¸­
 		request.getSession().setAttribute("userid", userid);
 		
 		resStr = gtSdk.getResponseStr();
