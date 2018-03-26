@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cn.edu.ncu.newmedia.dao.DBServlet;
+import cn.edu.ncu.newmedia.dao.CommunityAccountDao;
 import cn.edu.ncu.newmedia.util.message.ApiServlet;
 
 public class RegisterServlet extends HttpServlet {
@@ -76,25 +76,41 @@ public class RegisterServlet extends HttpServlet {
 			
 			String mobile = (String) session.getAttribute("mobile");
 			
-			DBServlet db = new DBServlet();
+			CommunityAccountDao db = new CommunityAccountDao();
 			
-			db.register(mobile, community, password);
+			try {
+				db.register(mobile, community, password);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else if(step.equals("4")){
 			
 			String password = request.getParameter("password");
 			String mobile = (String) session.getAttribute("mobile");
 			
-			DBServlet db = new DBServlet();
-			db.reset(mobile, password);
+			CommunityAccountDao db = new CommunityAccountDao();
+			
+				try {
+					db.reset(mobile, password);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			
 		}else if(step.equals("5")){
 			String mobile = request.getParameter("telephone");
 			
-			DBServlet db = new DBServlet();
+			CommunityAccountDao db = new CommunityAccountDao();
 			
-			if(db.isExit(mobile)){
-				response.setCharacterEncoding("UTF-8");
-				response.getWriter().print("true");
+			try {
+				if(db.isExit(mobile)){
+					response.setCharacterEncoding("UTF-8");
+					response.getWriter().print("true");
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 
