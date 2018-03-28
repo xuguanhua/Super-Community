@@ -42,6 +42,7 @@
             return this;
         }
     };
+
     function Config(config) {
         var self = this;
         new _Object(config)._each(function (key, value) {
@@ -113,8 +114,8 @@
         script.onload = script.onreadystatechange = function () {
             if (!loaded &&
                 (!script.readyState ||
-                "loaded" === script.readyState ||
-                "complete" === script.readyState)) {
+                    "loaded" === script.readyState ||
+                    "complete" === script.readyState)) {
 
                 loaded = true;
                 setTimeout(function () {
