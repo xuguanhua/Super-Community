@@ -56,10 +56,10 @@ CREATE TABLE community_messages (
 -- ----------------------------
 DROP TABLE IF EXISTS department;
 CREATE TABLE department (
-  id              INT (10)    NOT NULL PRIMARY KEY COMMENT '部门id',
-  community_id    INT (10)    NOT NULL COMMENT '社团id',
-  department_name VARCHAR(16) NOT NULL COMMENT '社团部门名称',
-  create_at       DATETIME DEFAULT NULL COMMENT '部门创建时间'
+  id              INT (10)      NOT NULL PRIMARY KEY COMMENT '部门id',
+  community_id    INT (10)      NOT NULL COMMENT '社团id',
+  department_name VARCHAR(16)   NOT NULL COMMENT '社团部门名称',
+  create_at       DATETIME      DEFAULT NULL COMMENT '部门创建时间'
 ) ENGINE = MyISAM DEFAULT CHARSET = utf8;
 
 -- ----------------------------
@@ -101,14 +101,14 @@ CREATE TABLE recruit (
 -- ----------------------------
 DROP TABLE IF EXISTS recruit_times;
 CREATE TABLE recruit_times (
-  id                INT (12)     NOT NULL PRIMARY KEY COMMENT '招新场次id',
-  community_id      INT (12)     NOT NULL COMMENT '社团id',
-  interviewers_ph   INT (5)      NOT NULL DEFAULT '0' COMMENT '表示每小时面试人数',
-  interview_date    DATETIME     NOT NULL COMMENT '表示面试时间',
-  interview_address VARCHAR(100) NOT NULL COMMENT '面试地点',
-  create_at         TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '招新的创建时间',
-endtime DATETIME NOT NULL COMMENT '招新结束时间',
-STATE TINYINT (1) unsigned NOT NULL COMMENT '招新状态，1表示招新仍在继续，0表示招新结束'
+  id                INT (12)            NOT NULL PRIMARY KEY COMMENT '招新场次id',
+  community_id      INT (12)            NOT NULL COMMENT '社团id',
+  interviewers_ph   INT (5)             NOT NULL DEFAULT 0 COMMENT '表示每小时面试人数',
+  interview_date    DATETIME            NOT NULL COMMENT '表示面试时间',
+  interview_address VARCHAR(100)        NOT NULL COMMENT '面试地点',
+  create_at         TIMESTAMP           NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '招新的创建时间',
+  endtime           DATETIME            NOT NULL COMMENT '招新结束时间',
+  state             UNSIGNED TINYINT(1) NOT NULL COMMENT '招新状态，1表示招新仍在继续，0表示招新结束'
 ) ENGINE=MyISAM DEFAULT CHARSET = utf8;
 
 -- ----------------------------
