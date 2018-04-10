@@ -11,6 +11,7 @@ public class Department {
      */
 
     private long id;
+    private int departmentId;
     private long communityId;
     private String departmentName;
     private Date createAt;
@@ -18,14 +19,16 @@ public class Department {
     public Department() {
     }
 
-    public Department(long communityId, String departmentName, Date createAt) {
-        this.communityId = communityId;
+    public Department(int departmentId, long communityId, String departmentName, Date createAt) {
+        this.departmentId = departmentId;
+    	this.communityId = communityId;
         this.departmentName = departmentName;
         this.createAt = createAt;
     }
 
-    public Department(long id, long communityId, String departmentName, Date createAt) {
+    public Department(int departmentId, long id, long communityId, String departmentName, Date createAt) {
         this.id = id;
+        this.departmentId = departmentId;
         this.communityId = communityId;
         this.departmentName = departmentName;
         this.createAt = createAt;
@@ -34,24 +37,39 @@ public class Department {
     public long getId() {
         return this.id;
     }
+    
     public void setId(long id) {
         this.id = id;
     }
-    public long getCommunityId() {
+    
+    public int getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setDepartmentId(int departmentId) {
+		this.departmentId = departmentId;
+	}
+
+	public long getCommunityId() {
         return this.communityId;
     }
+    
     public void setCommunityId(long communityId) {
         this.communityId = communityId;
     }
+    
     public String getDepartmentName() {
         return this.departmentName;
     }
+    
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
     }
+    
     public Date getCreateAt() {
         return this.createAt;
     }
+    
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
