@@ -14,8 +14,8 @@ public class RecruitTimes {
      * state                招新状态
      */
 
-    private long id;
-    private long communityId;
+    private int id;
+    private int communityId;
     private int interviewersPh;
     private Date interviewDate;
     private String interviewAddress;
@@ -26,7 +26,7 @@ public class RecruitTimes {
     public RecruitTimes(){
     }
 
-    public RecruitTimes(long communityId, int interviewersPh, Date interviewDate, String interviewAddress,
+    public RecruitTimes(int communityId, int interviewersPh, Date interviewDate, String interviewAddress,
         Date createAt, Date endtime, byte state){
             this.communityId = communityId;
             this.interviewersPh = interviewersPh;
@@ -37,7 +37,7 @@ public class RecruitTimes {
             this.state = state;
     }
 
-    public RecruitTimes(long id, long communityId, int interviewersPh, Date interviewDate, String interviewAddress,
+    public RecruitTimes(int id, int communityId, int interviewersPh, Date interviewDate, String interviewAddress,
         Date createAt, Date endtime, byte state){
             this.id = id;
             this.communityId = communityId;
@@ -49,67 +49,67 @@ public class RecruitTimes {
             this.state = state;
     }
 
-    public long getId() {
-        return this.id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public long getCommunityId() {
-        return this.communityId;
-    }
+	public int getCommunityId() {
+		return communityId;
+	}
 
-    public void setCommunityId(long communityId) {
-        this.communityId = communityId;
-    }
+	public void setCommunityId(int communityId) {
+		this.communityId = communityId;
+	}
 
-    public int getInterviewersPh() {
-        return this.interviewersPh;
-    }
+	public int getInterviewersPh() {
+		return interviewersPh;
+	}
 
-    public void setInterviewersPh(int interviewersPh) {
-        this.interviewersPh = interviewersPh;
-    }
+	public void setInterviewersPh(int interviewersPh) {
+		this.interviewersPh = interviewersPh;
+	}
 
-    public Date getInterviewDate() {
-        return this.interviewDate;
-    }
+	public Date getInterviewDate() {
+		return interviewDate;
+	}
 
-    public void setInterviewDate(Date interviewDate) {
-        this.interviewDate = interviewDate;
-    }
+	public void setInterviewDate(Date interviewDate) {
+		this.interviewDate = interviewDate;
+	}
 
-    public String getInterviewAddress() {
-        return this.interviewAddress;
-    }
+	public String getInterviewAddress() {
+		return interviewAddress;
+	}
 
-    public void setInterviewAddress(String interviewAddress) {
-        this.interviewAddress = interviewAddress;
-    }
+	public void setInterviewAddress(String interviewAddress) {
+		this.interviewAddress = interviewAddress;
+	}
 
-    public Date getCreateAt() {
-        return this.createAt;
-    }
+	public Date getCreateAt() {
+		return createAt;
+	}
 
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
+	}
 
-    public Date getEndtime() {
-        return this.endtime;
-    }
+	public Date getEndtime() {
+		return endtime;
+	}
 
-    public void setEndtime(Date endtime) {
-        this.endtime = endtime;
-    }
+	public void setEndtime(Date endtime) {
+		this.endtime = endtime;
+	}
 
-    public byte getState() {
-        return this.state;
-    }
+	public byte getState() {
+		return state;
+	}
 
-    public void setState(byte state) {
-        this.state = state;
-    }
+	public void setState(byte state) {
+		this.state = state;
+	}
 }

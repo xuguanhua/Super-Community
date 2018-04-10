@@ -17,7 +17,7 @@ public class CommunityAccount {
     private String communityPhone;
     private String communityName;
     private String password;
-    private byte passwordError;
+    private int passwordError;
     private Date loginTime;
     private byte state;
 
@@ -76,11 +76,11 @@ public class CommunityAccount {
         this.password = password;
     }
 
-    public byte getPasswordError() {
+    public int getPasswordError() {
         return passwordError;
     }
 
-    public void setPasswordError(byte passwordError) {
+    public void setPasswordError(int passwordError) {
         this.passwordError = passwordError;
     }
     

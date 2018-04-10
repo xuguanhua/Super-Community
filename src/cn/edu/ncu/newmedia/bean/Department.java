@@ -10,23 +10,23 @@ public class Department {
      * createAt         部门创建时间
      */
 
-    private long id;
+    private int id;
     private int departmentId;
-    private long communityId;
+    private int communityId;
     private String departmentName;
     private Date createAt;
 
     public Department() {
     }
 
-    public Department(int departmentId, long communityId, String departmentName, Date createAt) {
+    public Department(int departmentId, int communityId, String departmentName, Date createAt) {
         this.departmentId = departmentId;
     	this.communityId = communityId;
         this.departmentName = departmentName;
         this.createAt = createAt;
     }
 
-    public Department(int departmentId, long id, long communityId, String departmentName, Date createAt) {
+    public Department(int departmentId, int id, int communityId, String departmentName, Date createAt) {
         this.id = id;
         this.departmentId = departmentId;
         this.communityId = communityId;
@@ -34,11 +34,11 @@ public class Department {
         this.createAt = createAt;
     }
 
-    public long getId() {
+    public int getId() {
         return this.id;
     }
     
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     
@@ -50,11 +50,11 @@ public class Department {
 		this.departmentId = departmentId;
 	}
 
-	public long getCommunityId() {
+	public int getCommunityId() {
         return this.communityId;
     }
     
-    public void setCommunityId(long communityId) {
+    public void setCommunityId(int communityId) {
         this.communityId = communityId;
     }
     
