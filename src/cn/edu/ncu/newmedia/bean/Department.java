@@ -7,29 +7,33 @@ public class Department {
      * id               部门id
      * communityId      社团id
      * departmentName   部门名称
+     * departmentDes	部门简述
      * createAt         部门创建时间
      */
 
     private int id;
     private int departmentId;
     private int communityId;
+    private String departmentDes;
     private String departmentName;
     private Date createAt;
 
     public Department() {
     }
 
-    public Department(int departmentId, int communityId, String departmentName, Date createAt) {
+    public Department(int departmentId, int communityId, String departmentDes, String departmentName, Date createAt) {
         this.departmentId = departmentId;
     	this.communityId = communityId;
+    	this.departmentDes = departmentDes;
         this.departmentName = departmentName;
         this.createAt = createAt;
     }
 
-    public Department(int departmentId, int id, int communityId, String departmentName, Date createAt) {
+    public Department(int id,int departmentId, int communityId, String departmentDes, String departmentName, Date createAt) {
         this.id = id;
         this.departmentId = departmentId;
         this.communityId = communityId;
+        this.departmentDes = departmentDes;
         this.departmentName = departmentName;
         this.createAt = createAt;
     }
@@ -58,7 +62,15 @@ public class Department {
         this.communityId = communityId;
     }
     
-    public String getDepartmentName() {
+    public String getDepartmentDes() {
+		return departmentDes;
+	}
+
+	public void setDepartmentDes(String departmentDes) {
+		this.departmentDes = departmentDes;
+	}
+
+	public String getDepartmentName() {
         return this.departmentName;
     }
     
