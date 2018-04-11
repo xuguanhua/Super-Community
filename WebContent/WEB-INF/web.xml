@@ -35,6 +35,15 @@
         <url-pattern>register</url-pattern>
     </servlet-mapping>
 
+	<!-- 报名者短信发送 -->
+	<servlet>
+		<servlet-name>SendInformationToApplicats</servlet-name>
+		<servlet-class>cn.edu.ncu.newmedia.servlet.SendInformationToApplicatsServlet</servlet-class>
+	</servlet>
+    <servlet-mapping>
+        <servlet-name>SendInformationToApplicats</servlet-name>
+        <url-pattern>sendmessage</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.htm</welcome-file>
