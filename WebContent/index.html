@@ -2,102 +2,102 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Login</title>
-	<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-	<div class="container">
-		<div class="box">
-			<form id="form-login" action="" method="post">
-				<div class="item">
-					<input type="text" name="userID" id="userID" placeholder="用户ID(手机号)">
-				</div>
-				<div class="item">
-					<input type="password" name="password" id="password" placeholder="密码">
-				</div>
+<div class="container">
+    <div class="box">
+        <form id="form-login" action="" method="post">
+            <div class="item">
+                <input type="text" name="userID" id="userID" placeholder="用户ID(手机号)">
+            </div>
+            <div class="item">
+                <input type="password" name="password" id="password" placeholder="密码">
+            </div>
 
-				<div class="item" id="captchator">
-					<div id="gt">Loading...</div>
-				</div>
-				<button type="submit" class="btn btn-login" id="btn-login" disabled>登 录</button>
-			</form>
+            <div class="item" id="captchator">
+                <div id="gt">Loading...</div>
+            </div>
+            <button type="submit" class="btn btn-login" id="btn-login" disabled>登 录</button>
+        </form>
 
-			<div class="other">
-				<a href="reset.html" class="link-forget">忘记密码</a>
-				<a href="register.html" class="link-register">注册账号</a>
-			</div>
-		</div>
-	</div>
+        <div class="other">
+            <a href="reset.html" class="link-forget">忘记密码</a>
+            <a href="register.html" class="link-register">注册账号</a>
+        </div>
+    </div>
+</div>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/gt.js"></script>
-	<script src="js/jquery.validate.min.js"></script>
-	<script src="js/validate.js"></script>
-	<script>
-		  $(document).ready(function () {
-			
-			$("#form-login").validate({
-		  		submitHandler: function (form) {
-					form.submit();
-				}
-			});
+<script src="js/jquery.min.js"></script>
+<script src="js/gt.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/validate.js"></script>
+<script>
+    $(document).ready(function () {
 
-		})
-		var handler = function (captchaObj) {
-			// 将验证码加到id为gt的元素里，同时会有三个input的值：geetest_challenge, geetest_validate, geetest_seccode
-			captchaObj.appendTo("#captchator");
-			
-			captchaObj.onReady(function() {
-				$("#gt").hide();
-			})
-			captchaObj.onSuccess(function () {
-				var result = captchaObj.getValidate();
-				if (result) {
-					$.ajax({
-						url: "gt/ajax-validate2",
-						type: "post",
-						dataType: 'json',
-						data: {
-							"geetest_challenge": result.geetest_challenge,
-							"geetest_validate": result.geetest_validate,
-							"geetest_seccode": result.geetest_seccode
-						},
-						success: function (date) {
-							if (date) $("#btn-login").removeAttr("disabled");
-						},
-						error:function(){
-							alert("error");
-						}
-					})
-				}
-			})
-		}
-	
-		
-		$.ajax({
-			url: "gt/register2?t=" + (new Date()).getTime(), // 加随机数防止缓存
-			type: "get",
-			dataType: "json",
-			success: function (data) {
-				// 使用initGeetest接口
-				// 参数1：配置参数
-				// 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
-				initGeetest({
-					gt: data.gt,
-					challenge: data.challenge,
-					new_captcha: data.new_captcha,
-					offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
-					product: "popup", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
-				}, handler);
-			}
-		});
-		
-		
-	</script>
+        $("#form-login").validate({
+            submitHandler: function (form) {
+                form.submit();
+            }
+        });
+
+    })
+    var handler = function (captchaObj) {
+        // 将验证码加到id为gt的元素里，同时会有三个input的值：geetest_challenge, geetest_validate, geetest_seccode
+        captchaObj.appendTo("#captchator");
+
+        captchaObj.onReady(function () {
+            $("#gt").hide();
+        })
+        captchaObj.onSuccess(function () {
+            var result = captchaObj.getValidate();
+            if (result) {
+                $.ajax({
+                    url: "gt/ajax-validate2",
+                    type: "post",
+                    dataType: 'json',
+                    data: {
+                        "geetest_challenge": result.geetest_challenge,
+                        "geetest_validate": result.geetest_validate,
+                        "geetest_seccode": result.geetest_seccode
+                    },
+                    success: function (date) {
+                        if (date) $("#btn-login").removeAttr("disabled");
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                })
+            }
+        })
+    }
+
+
+    $.ajax({
+        url: "gt/register2?t=" + (new Date()).getTime(), // 加随机数防止缓存
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            // 使用initGeetest接口
+            // 参数1：配置参数
+            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+            initGeetest({
+                gt: data.gt,
+                challenge: data.challenge,
+                new_captcha: data.new_captcha,
+                offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+                product: "popup", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+            }, handler);
+        }
+    });
+
+
+</script>
 </body>
 
 </html>

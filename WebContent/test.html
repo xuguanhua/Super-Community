@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
 </head>
 <body>
-	<form id="form-code" action="">
-				<div class="item">
-					<input type="text" name="userID" id="userID" placeholder="用户名(手机号)">
-				</div>
-				<div class="item item-code">
-					<input type="text" name="code" id="code" placeholder="验证码">
-					<button type="submit" class="btn btn-code" id="btn-code">发送</button>
-				</div>
-	</form>
-	<button class="btn" id="btn-next" disabled>下一步</button>
-			
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery.validate.min.js"></script>
-	<script src="js/validate.js"></script>
+<form id="form-code" action="">
+    <div class="item">
+        <input type="text" name="userID" id="userID" placeholder="用户名(手机号)">
+    </div>
+    <div class="item item-code">
+        <input type="text" name="code" id="code" placeholder="验证码">
+        <button type="submit" class="btn btn-code" id="btn-code">发送</button>
+    </div>
+</form>
+<button class="btn" id="btn-next" disabled>下一步</button>
 
-	<script>		
-		$(document).ready(function () {
-			alert("1");
-			$("#form-code").validate({
-				submitHandler: function (form) {
-					alert("3");
-					$.post(
-						"register",
-						{
-							"telephone": $("#userID").val()
-						},
-						function (date) {
-							alert(date.obj);
-							$("#btn-code").attr("disabled", "true");
-							$("#btn-next").removeAttr("disabled");
-						}, "json"
-					)
-				}
-			});
-		})
-	</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/validate.js"></script>
+
+<script>
+    $(document).ready(function () {
+        alert("1");
+        $("#form-code").validate({
+            submitHandler: function (form) {
+                alert("3");
+                $.post(
+                    "register",
+                    {
+                        "telephone": $("#userID").val()
+                    },
+                    function (date) {
+                        alert(date.obj);
+                        $("#btn-code").attr("disabled", "true");
+                        $("#btn-next").removeAttr("disabled");
+                    }, "json"
+                )
+            }
+        });
+    })
+</script>
 
 </body>
 </html>

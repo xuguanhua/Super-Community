@@ -67,18 +67,20 @@ git clone -b develop <remote-repository-name>
 
 #### 2. 创建新的分支完成 issue
 
-开始实现一个feature或者解决一个bug之前，首先切换到develop分支上
+开始实现一个feature或者解决一个bug之前，
+首先切换到develop分支上
 
 ```bash
 git checkout develop
 ```
 
-asdasdasdsadasdsa
-asdasdasdasdasdas
-asdasdasdasdasdasda
-asdasdasdadasd
-dasdasdasdas
+
 创建feature或者bug的分支,并且切换到该分支
+**然后创建feature或者bug的分支,并且切换到该分支***
+**然后创建feature或者bug的分支,并且切换到该分支***
+**然后创建feature或者bug的分支,并且切换到该分支***
+（重要的事情说三遍）
+指令如下
 
 ```bash
 git checkout -b <feature/bug-branch-name>
