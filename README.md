@@ -74,6 +74,8 @@ git clone -b develop <remote-repository-name>
 git checkout develop
 ```
 
+
+创建feature或者bug的分支,并且切换到该分支
 **然后创建feature或者bug的分支,并且切换到该分支***
 **然后创建feature或者bug的分支,并且切换到该分支***
 **然后创建feature或者bug的分支,并且切换到该分支***
