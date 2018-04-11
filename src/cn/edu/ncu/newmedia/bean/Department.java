@@ -10,49 +10,67 @@ public class Department {
      * createAt         部门创建时间
      */
 
-    private long id;
-    private long communityId;
+    private int id;
+    private int communityId;
     private String departmentName;
     private Date createAt;
+    private String description;
 
     public Department() {
     }
 
-    public Department(long communityId, String departmentName, Date createAt) {
+    public Department(int communityId, String departmentName, Date createAt, String description) {
         this.communityId = communityId;
         this.departmentName = departmentName;
         this.createAt = createAt;
+        this.description = description;
     }
 
-    public Department(long id, long communityId, String departmentName, Date createAt) {
+    public Department(int id, int communityId, String departmentName, Date createAt, String description) {
         this.id = id;
         this.communityId = communityId;
         this.departmentName = departmentName;
         this.createAt = createAt;
+        this.description = description;
     }
 
-    public long getId() {
+    public int getId() {
         return this.id;
     }
-    public void setId(long id) {
+    
+    public void setId(int id) {
         this.id = id;
     }
-    public long getCommunityId() {
+    
+    public int getCommunityId() {
         return this.communityId;
     }
-    public void setCommunityId(long communityId) {
+    
+    public void setCommunityId(int communityId) {
         this.communityId = communityId;
     }
+    
     public String getDepartmentName() {
         return this.departmentName;
     }
+    
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
     }
+    
     public Date getCreateAt() {
         return this.createAt;
     }
+    
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 }
