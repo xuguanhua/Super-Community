@@ -7,15 +7,15 @@ import java.util.Properties;
 
 public class JdbcUtil {
 
-    public static String DRIVERNAME = null;
-    public static String URL = null;
+    private static String DRIVERNAME = null;
+    private static String URL = null;
 
     //数据库用户名和密码
-    public static String USER = null;
-    public static String PASSWORD = null;
+    private static String USER = null;
+    private static String PASSWORD = null;
 
     //连接
-    public static Connection conn = null;
+    private static Connection conn = null;
 
     //获取数据库连接信息
     static {
@@ -60,6 +60,9 @@ public class JdbcUtil {
         st.close();
         rs.close();
         conn.close();
+        st=null;
+        rs=null;
+        conn=null;
     }
 
     /*
@@ -69,6 +72,8 @@ public class JdbcUtil {
     public static void closeResource(Connection conn, PreparedStatement st) throws SQLException {
         st.close();
         conn.close();
+        st=null;
+        conn=null;
     }
 
 
