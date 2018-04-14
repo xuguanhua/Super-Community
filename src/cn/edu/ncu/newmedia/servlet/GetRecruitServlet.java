@@ -3,7 +3,6 @@ package cn.edu.ncu.newmedia.servlet;
 import cn.edu.ncu.newmedia.bean.Recruit;
 import cn.edu.ncu.newmedia.dao.RecruitDao;
 import java.io.IOException;
-import java.sql.SQLException;
 
 @javax.servlet.annotation.WebServlet(name = "GetRecruitServlet")
 public class GetRecruitServlet extends javax.servlet.http.HttpServlet {
