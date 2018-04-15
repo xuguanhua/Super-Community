@@ -25,6 +25,27 @@
 
     <!-- 极验验证码  end -->
 
+	<!-- 极验验证码  start -->
+    <servlet>
+        <servlet-name>StartCaptchaServlet</servlet-name>
+        <servlet-class>cn.edu.ncu.newmedia.util.verification.StartCaptchaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StartCaptchaServlet</servlet-name>
+        <url-pattern>/gt/register2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VerifyLoginServlet</servlet-name>
+        <servlet-class>cn.edu.ncu.newmedia.util.verification.VerifyLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VerifyLoginServlet</servlet-name>
+        <url-pattern>/gt/ajax-validate2</url-pattern>
+    </servlet-mapping>
+
+    <!-- 极验验证码  end -->
+
     <!-- 注册  -->
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
