@@ -7,51 +7,81 @@ public class Department {
      * id               部门id
      * communityId      社团id
      * departmentName   部门名称
+     * departmentDes	部门简述
      * createAt         部门创建时间
      */
 
-    private long id;
-    private long communityId;
+    private int id;
+    private int departmentId;
+    private int communityId;
+    private String departmentDes;
     private String departmentName;
     private Date createAt;
 
     public Department() {
     }
 
-    public Department(long communityId, String departmentName, Date createAt) {
-        this.communityId = communityId;
+    public Department(int departmentId, int communityId, String departmentDes, String departmentName, Date createAt) {
+        this.departmentId = departmentId;
+    	this.communityId = communityId;
+    	this.departmentDes = departmentDes;
         this.departmentName = departmentName;
         this.createAt = createAt;
     }
 
-    public Department(long id, long communityId, String departmentName, Date createAt) {
+    public Department(int id,int departmentId, int communityId, String departmentDes, String departmentName, Date createAt) {
         this.id = id;
+        this.departmentId = departmentId;
         this.communityId = communityId;
+        this.departmentDes = departmentDes;
         this.departmentName = departmentName;
         this.createAt = createAt;
     }
 
-    public long getId() {
+    public int getId() {
         return this.id;
     }
-    public void setId(long id) {
+    
+    public void setId(int id) {
         this.id = id;
     }
-    public long getCommunityId() {
+    
+    public int getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setDepartmentId(int departmentId) {
+		this.departmentId = departmentId;
+	}
+
+	public int getCommunityId() {
         return this.communityId;
     }
-    public void setCommunityId(long communityId) {
+    
+    public void setCommunityId(int communityId) {
         this.communityId = communityId;
     }
-    public String getDepartmentName() {
+    
+    public String getDepartmentDes() {
+		return departmentDes;
+	}
+
+	public void setDepartmentDes(String departmentDes) {
+		this.departmentDes = departmentDes;
+	}
+
+	public String getDepartmentName() {
         return this.departmentName;
     }
+    
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
     }
+    
     public Date getCreateAt() {
         return this.createAt;
     }
+    
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }

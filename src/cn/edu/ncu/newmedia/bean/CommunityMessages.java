@@ -11,23 +11,23 @@ public class CommunityMessages {
      * createAt     消息创建时间
      */
 
-    private long id;
-    private long cid;
+    private int id;
+    private int cid;
     private String message;
-    private int readed;
+    private byte readed;
     private Date createAat;
 
     public CommunityMessages() {
     }
 
-    public CommunityMessages(long cid, String message, int readed, Date createAat) {
+    public CommunityMessages(int cid, String message, byte readed, Date createAat) {
         this.cid = cid;
         this.message = message;
         this.readed = readed;
         this.createAat = createAat;
     }
 
-    public CommunityMessages(long id, long cid, String message, int readed, Date createAat) {
+    public CommunityMessages(int id, int cid, String message, byte readed, Date createAat) {
         this.id = id;
         this.cid = cid;
         this.message = message;
@@ -35,19 +35,19 @@ public class CommunityMessages {
         this.createAat = createAat;
     }
 
-    public long getId() {
+    public int getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public long getCid() {
+    public int getCid() {
         return this.cid;
     }
 
-    public void setCid(long cid) {
+    public void setCid(int cid) {
         this.cid = cid;
     }
 
@@ -59,11 +59,11 @@ public class CommunityMessages {
         this.message = message;
     }
 
-    public int getReaded() {
+    public byte getReaded() {
         return this.readed;
     }
 
-    public void setReaded(int readed) {
+    public void setReaded(byte readed) {
         this.readed = readed;
     }
 
