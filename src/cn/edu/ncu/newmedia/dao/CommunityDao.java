@@ -24,7 +24,7 @@ public class CommunityDao{
 
     
     /**----------显示社团信息------------ */
-    public CommunityAccount get( id) {
+    public CommunityAccount get(int id) {
         CommunityAccount ct = null;
         
         try {
