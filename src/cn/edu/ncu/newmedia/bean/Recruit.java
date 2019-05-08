@@ -27,8 +27,9 @@ public class Recruit {
      * state                    招新状态
      */
 
-    private String id;
-    private long communityId;
+    private int id;
+    private String studentId;
+    private int communityId;
     private String name;
     private String sex;
     private String nation;
@@ -51,10 +52,11 @@ public class Recruit {
     public Recruit() {
     }
 
-    public Recruit(long communityId, String name, String sex, String nation, Date birthday,
+    public Recruit(String studentId,int communityId, String name, String sex, String nation, Date birthday,
         String nativePlace, String politicalAffiliation, String college, String major, String phone,
         String department1, String department2, String department3, String speciality, String experience,
         long timesId, byte messageState, Date createAt, byte state) {
+            this.studentId = studentId;
             this.communityId = communityId;
             this.name = name;
             this.sex = sex;
@@ -77,11 +79,12 @@ public class Recruit {
             
     }
 
-    public Recruit(String id, long communityId, String name, String sex, String nation, Date birthday,
+    public Recruit(int id, String studentId,int communityId, String name, String sex, String nation, Date birthday,
         String nativePlace, String politicalAffiliation, String college, String major, String phone,
         String department1, String department2, String department3, String speciality, String experience,
         long timesId, byte messageState, Date createAt, byte state) {
             this.id = id;
+            this.studentId = studentId;
             this.communityId = communityId;
             this.name = name;
             this.sex = sex;
@@ -104,19 +107,23 @@ public class Recruit {
             
     }
 
-    public String getId() {
+    public int getId() {
         return this.id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public long getCommunityId() {
+    public String getStudentId() {return this.studentId;}
+
+    public void setStudentId(String studentId) {this.studentId = studentId;}
+
+    public int getCommunityId() {
         return this.communityId;
     }
 
-    public void setCommunityId(long communityId) {
+    public void setCommunityId(int communityId) {
         this.communityId = communityId;
     }
 
